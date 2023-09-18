@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% set ns=namespace(sum1=0,avg=0) %}
+	{% for key,values in paper.items() %}
+
+<tr>
+	<th>{{key}}</th>
+	<td>{{values}}</td>
+	{% set ns.sum1=ns.sum1+values |int %}
+</tr>
+{% endfor %}
+<tr>
+	<th>Total</th>
+	<td>{{ns.sum1}}</td>
+</tr>
+
+<tr>
+	<th>Average</th>
+	<td>{{ns.avg}}</td>
+</tr>
+
+{% if ns.avg<40 %}
+	{% set result='Fail' %}
+{% elif ns.avg<50 %}
+	{% set result='Pass' %}
+{% elif ns.avg<60 %}
+	{% set result='Second Class' %}
+{% elif ns.avg<70 %}
+	{% set result='First Class' %}
+{% else %}
+	{% set result='Distinction' %}
+{% endif %}
+
+<tr>
+	<th>Remark</th>
+	<td>{{result}}</td>
+</tr>
+</body>
+</html>
+

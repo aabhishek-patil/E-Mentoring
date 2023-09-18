@@ -1,0 +1,74 @@
+{% extends "layout1.html" %}
+{% block body %}
+ <div class="row"><h3>Student</h3></div>
+  <div class="row">
+    <div class="col-md-4">
+      {% with messages = get_flashed_messages()  %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" x-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="card card-body">
+        <form action="{{url_for('add_student')}}" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="path" placeholder="path">
+          </div>
+          <!-- <div class="form-group">
+            <input type="text" class="form-control" name="email" 
+
+
+placeholder="Email"> -->
+          </div>
+          <button class="btn btn-primary btn-block">
+            Save 
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+           <!--  <td>ID</td> -->
+            <td>Name</td>
+            <td>Path</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in student %}
+          <tr>
+            <td>{{x[0]}}</td>
+            <td>{{x[1]}}</td>
+            <td>{{x[2]}}</td>
+            <td width="130">
+              <a href="/edit/{{x[0]}}" class="btn btn-secondary btn-sm">edit</a>
+              <a href="/delete/{{x[0]}}" class="btn btn-danger btn-delete btn-sm">delete</a>
+            </td>
+  
+
+        </tr>
+          {% endfor %}
+   
+
+     </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+ 
+{% endblock %}
+
+
+
+
+

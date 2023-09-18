@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style>
+	h1{
+		font-size: 40px;
+        text-align: center;
+       }
+
+	table, th, td {
+ 	 border: 1px solid;
+	}
+
+	body{
+	background-color: #cccccc;
+	}
+
+	input[type=text], select, textarea{
+  width: 30%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #696969;} /* Green */
+</style>
+
+</head>
+<body>
+	<div class="card card-body">
+		<center>
+			<h1> ADD LECTURES </h1>
+		</center>
+		<form action="/addlec3" method="POST">
+			<div class="form-group">
+				<input type="text" name="name" placeholder="Video Name">
+			</div><br>
+			<div class="form-group">
+				<input type="text" name="path" placeholder="path">
+			</div><br>
+			<button class="button button1">Add</button><br>
+		</form>
+	</div>
+	<br>
+	<br>
+
+	<table id="example" class="table-striped table-bordered" style="width:100%">
+		<thead>
+			<tr>
+				<td>
+					Name
+				</td>
+				<td>
+					Path
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for z in val %}
+			<tr>
+				<td>{{z[0]}}</td>
+				<td>{{z[1]}}</td>
+				<td width="100">
+				<a href="/dellec3/{{z[2]}}"><button>Delete</button></a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+</body>
+</html>

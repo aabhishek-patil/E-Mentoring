@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+  <title>salary</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: lavenderblush;">
+
+<div class="container">
+ 	<h2 style="color: blueviolet;"><center>Abhishek Co.Ltd, Kolhapur</center></h2> 
+  <h2 style="color: blueviolet;"><center>Tarabai Park, Kolhapur</center></h2><br>        
+  <table class="table" style="background-color: white">
+    <thead>
+      <tr>
+        <th>Employee No</th>
+        <th>Employee name</th>
+        <th>Net salary</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{% for data in d %}
+      {% set ns=namespace(bs=data[7]) %}
+      {% set ns1=namespace(g=data[8]) %}
+      <tr>
+         <td>{{ data[0] }}</td>
+         <td>{{ data[1] }}</td>
+
+          {% if ns1.g == 'A' %}
+            {% set DA = (ns.bs*125)/100 %}
+          {% elif ns1.g == 'B' %}
+            {% set DA = (ns.bs*100)/100 %}
+          {% else %}
+            {% set DA = (ns.bs*75)/100 %}
+          {% endif %}
+
+          {% if ns1.g == 'A' %}
+            {% set HRA = 35000 %}
+          {% else %}
+            {% set HRA = 10000 %}
+          {% endif %}
+              
+          {% set GE = ns.bs + DA + HRA %}
+         
+          {% set PF = (15*GE)/100 %}
+          
+          {% set PTax = (10*GE)/100 %}
+          
+          {% set deduction = PF + PTax %}
+         
+        <td>
+          {% set net_salary = GE - deduction %}
+          {{ net_salary }}
+        </td>
+      </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

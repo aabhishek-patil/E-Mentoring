@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="card card-body">
+<form action="{{url_for('solve')}}" method="POST">
+<div class="form-group">
+<input type="text" class="form-control" name="userid" placeholder="UserId">
+</div>
+<button type="submit">SUBMIT</button>
+{{userid}}
+</form>
+</div>
+
+{% endblock %}

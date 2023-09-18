@@ -1,0 +1,315 @@
+ <div class="query" style="text-align: center">
+        <form action="http://localhost:5000/query" method="post">
+            <h1 style="color: white; text-align: center">Department Of Computer Science</h1>
+            <h3 style="color: whitesmoke"><b>Name:</b></h3>
+        <input type="text" name="user" placeholder="Name" required="" style="font-size: 16px;width: 15%;padding: 15px 10px;border: 0;outline: none;border-radius: 5px"><br><br>
+
+         <p style="color: whitesmoke; margin-top: 43px">What Is Your Doubt???</p>
+        <textarea id="Doubts" name="query" placeholder="PLz Ask Your Doubt!" style=" width: 50%;height: 150px;padding: 12px 20px;box-sizing: border-box;border: 2px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 16px;resize: none;"></textarea><br>
+        <button class="button button1">Send</button>
+
+
+
+
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubts</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url("static/Images/boo.jpg");
+            background-size: cover;
+            color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .images {
+            height: 400px;
+            width: 700px;
+            border-radius: 20px;
+        }
+
+        /* Float four columns side by side */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 0 20px;
+        }
+
+        /* Remove extra left and right margins, due to padding */
+        .row {
+            margin: 0 -25px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive columns */
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Style the counter cards */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-image: url("static/Images/book.jpg");
+           /* background-color: #000000;
+*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <img class="images" src="{{url_for('static', filename='images/comp.jpg')}}">
+                <a href="http://localhost:5000/query"><h3>Computer Science</h3></a>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img class="images" src="{{url_for('static', filename='images/stat.jpg')}}">
+                <h3>Statistics</h3>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img class="images" src="{{url_for('static', filename='images/phy.jpg')}}">
+                <h3>Physics</h3>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img class="images" src="{{url_for('static', filename='images/chem.jpg')}}">
+                <h3>Chemistry</h3>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+{% endblock %}
+
+
+
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Query</title>
+
+    <style>
+        body {
+            background-image: url("static/Images/book.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: grey;
+        }
+
+
+        .button {
+            background-color: whitesmoke;
+            border: none;
+            color: black;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1:hover {
+            background-color: #555555;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="query" style="text-align: center">
+        <form action="http://localhost:5000/query" method="post">
+            <h1 style="color: white; text-align: center">Department Of Computer Science</h1>
+            <h3 style="color: whitesmoke"><b>Name:</b></h3>
+        <input type="text" name="user" placeholder="Name" required="" style="font-size: 16px;width: 15%;padding: 15px 10px;border: 0;outline: none;border-radius: 5px"><br><br>
+        <div class="dropdown">
+            <button class="dropbtn" style="background-color: white;color: black; padding: 20px;font-size: 16px;border: none;cursor: pointer;">Choose Mentor</button>
+            <div class="dropdown-content" style="position: relative; display: inline-block">
+                <a href="#" style=" color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;">Mentor1</a>
+                <a href="#" style=" color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;">Mentor2</a>
+                <a href="#" style=" color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;">Mentor3</a>
+            </div>
+        </div>
+        <p style="color: whitesmoke; margin-top: 43px">What Is Your Doubt???</p>
+        <textarea id="Doubts" name="query" placeholder="PLz Ask Your Doubt!" style=" width: 50%;height: 150px;padding: 12px 20px;box-sizing: border-box;border: 2px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 16px;resize: none;"></textarea><br>
+        <button class="button button1">Send</button>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
+{% endblock %}
+
+
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        body {<!DOCTYPE html>
+
+            background-image: url("static/Images/ba.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        h3 {
+            color: whitesmoke;
+        }
+
+        p {
+            color: whitesmoke;
+            margin-top: 43px;
+        }
+
+         .feedback input {
+        font-size: 16px;
+        width: 15%;
+        padding: 15px 10px;
+        border: 0;
+        outline: none;
+        border-radius: 5px;
+        }
+
+        textarea {
+            width: 50%;
+            height: 150px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 16px;
+            resize: none;
+        }
+
+        .button {
+            background-color: whitesmoke;
+            border: none;
+            color: black;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1:hover {
+            background-color: #555555;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="feedback">
+        <form action="http://localhost:5000/feedback" method="POST">
+            <h1>FEEDBACK-FORM</h1>
+            <h3><b>Name:</b></h3>
+            <input type="text" name="user" placeholder="Name" required=""><br>
+            <p><b>Email:</b></p>
+            <input type="email" name="email" placeholder="Email" required=""><br><br>
+            <textarea id="feedback" placeholder="Feedback"></textarea><br>
+            <button class="button button1">Send</button>
+    </div>
+    </form>
+</body>
+
+</html>

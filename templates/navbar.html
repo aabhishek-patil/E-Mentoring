@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 80px">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="font-size: 30px">E-Mentoring</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav" style="font-size: 22px">
+        {% if "userloggedin" in session %}
+        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/">Home</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/doubt">Doubts</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/solveform">Answers</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/feedback">Feedback</a>
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+        <a class="nav-link" href="#"><b>Hello {{session['username']}} {{session['uid']}}</b></a>
+        <a class="nav-link" href="http://127.0.0.1:5000/profile/{{session['uid']}}"><i class="fa fa-user-circle-o"></i> Profile</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/">Logout</a>
+        {%else%}
+        <a class="nav-link" href="http://127.0.0.1:5000/mhome">Mentor</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/login">User Login</a>
+        {%endif%}
+
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="static/emp.css">		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title> Register </title>	
+	</head>
+	<body>
+			<div class="container">
+				<h2 >Employee Form </h2>
+				<div class="form-container">
+					<form action="{{ url_for('form') }}" method="post">
+				<div class="msg">{{ msg }}</div>
+
+						<div class="input-name">
+							<i class="fa fa-user lock"></i>
+							<input type="text" name="emp_no" placeholder="employee no" class="name">
+
+							<span>
+									<i class="fa fa-user lock"></i>
+							<input type="text" name="emp_name" placeholder="employee name" class="name">
+							</span>
+						</div>
+
+						<div class="input-name">
+							<i class="fa fa-university university" aria-hidden="true"></i>
+							<input type="text" name="department" placeholder="department" required class="text-name">
+						</div>
+
+						<div class="input-name">
+							<i class="fa fa-graduation-cap cap" aria-hidden="true"></i>
+							<input type="text" name="designation" placeholder="designation" required class="text-name">
+						</div>
+
+						<div class="input-name">
+							<i class="fa fa-envelope email"></i>
+							<input type="email" name="email" placeholder="email" required class="text-name">
+						</div>
+
+						<div class="input-name">
+							<i class="fa fa-phone contact" aria-hidden="true"></i>
+							<input type="Contact"  name="phone_no" placeholder="phone_no" required class="text-name">
+						</div>
+
+						<div class="input-name">
+							<input type="submit"  class="button" value="Submit">
+						</div>
+					
+					</form>
+				</div>
+			</div>
+	</body>
+</html>			
